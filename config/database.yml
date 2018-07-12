@@ -1,0 +1,13 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+production:
+  <<: *default
+  database: demo_app_production
+  username: <%= ENV["RDS_DATABASE_USERNAME"] %>
+  password: <%= ENV["RDS_DATABASE_PASSWORD"] %>
+  host: <%= ENV["RDS_DATABASE_PUBLIC_HOST"] %>
+
+
+
+

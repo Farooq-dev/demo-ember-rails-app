@@ -1,0 +1,39 @@
+{{#modal-dialog action="close"}}
+<header>
+    <h4>Edit Profile</h4>
+</header>
+<section>
+    <div class="form-inline">
+<div class="form-group">
+    <label for="profile-name">Name</label>
+    {{input id="profile-name" class="form-control" required="true" placeholder="Name" value=buffer.name action="save"}}
+</div>
+
+<div class="form-group">
+    <label for="profile-email">Email</label>
+    {{input id="profile-email" class="form-control" required="true" placeholder="Your Email" value=buffer.email action="save"}}
+</div>
+
+<div class="form-group">
+    <label for="profile-upwork_name">Upwork Name</label>
+    {{input id="profile-upwork_name" class="form-control" required="true" placeholder="Upwork Name" value=buffer.upwork_name action="save"}}
+</div>
+
+<div class="form-group">
+    <label for="profile-message">Message</label>
+    {{input id="profile-message" class="form-control" required="true" placeholder="Message" value=buffer.message action="save"}}
+</div>
+</div>
+</section>
+<footer>
+    <div class="pull-left">
+    {{#each error in errors.name}}
+<p class="text-danger">Name {{error.message}}</p>
+{{/each}}
+</div>
+<div class="pull-right">
+<button class="btn btn-primary" {{action "save"}}>Save</button>
+<button class="btn btn-default" {{action "close"}}>Cancel</button>
+</div>
+</footer>
+{{/modal-dialog}}

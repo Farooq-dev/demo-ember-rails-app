@@ -1,0 +1,62 @@
+<ol class='breadcrumb'>
+<li class='active'>Profiles</li>
+</ol>
+
+<legend>Profiles</legend>
+<p>
+    <form class="form-inline" role="form">
+<div class="form-group">
+    {{input type="text" id="new-profile" class="form-control" placeholder="Your Name" value=newName}}
+</div>
+<div class="form-group">
+    {{input type="text" id="new-email" class="form-control" placeholder="Your Email" value=newEmail}}
+</div>
+<div class="form-group">
+    {{input type="text" id="new-upwork_name" class="form-control" placeholder="Your Upwork Name" value=newUpwork}}
+</div>
+<div class="form-group">
+    {{input type="text" id="new-message" class="form-control" placeholder="Your Message" value=newMessage}}
+</div>
+<div class="form-group">
+<button type="submit" class="btn btn-primary btn-sm" {{action 'createProfile'}}><i class="glyphicon glyphicon-plus-sign"></i> Create Profile</button>
+</div>
+
+</form>
+{{outlet errors}}
+</p>
+
+<div class='row'>
+<div class='col-sm-12'>
+<div class='table-responsive'>
+<table class='table table-striped'>
+    <tr>
+        <th>#</th>
+<th>Name</th>
+<th>Email</th>
+<th>Upwork Name</th>
+<th>Message</th>
+<th></th>
+</tr>
+{{#each}}
+<tr>
+    <td>{{#link-to 'profile' this}}{{id}}{{/link-to}}</td>
+<td>{{#link-to 'profile' this}}{{name}}{{/link-to}}</td>
+<td>{{#link-to 'profile' this}}{{email}}{{/link-to}}</td>
+<td>{{#link-to 'profile' this}}{{upwork_name}}{{/link-to}}</td>
+<td>{{#link-to 'profile' this}}{{message}}{{/link-to}}</td>
+<td>
+    <div class="btn-toolbar pull-right">
+<div class="btn-group">
+<button class="btn btn-default btn-sm" {{action "openModal" "modal" model}}><i class="glyphicon glyphicon-edit"></i></button>
+<button class="btn btn-default btn-sm" {{action "deleteProfile"}}><i class="glyphicon glyphicon-trash"></i></button>
+    </div>
+    </div>
+    </td>
+    </tr>
+    {{else}}
+    <tr><td colspan="3">There are no profiles.</td></tr>
+    {{/each}}
+    </table>
+    </div>
+    </div>
+    </div>
